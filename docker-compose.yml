@@ -1,0 +1,20 @@
+version: '3.7'
+
+services:
+  item-app:
+    image: fahernkhan/repository:item-app-v1
+    ports:
+      - "80:8080"
+    depends_on:
+      - item-db
+    restart: always # Restart container jika terhenti
+
+  item-db:
+    image: mongo:3
+    volumes:
+      - app-db:/data/db
+    restart: always # Restart container jika terhenti
+
+volumes:
+  app-db:
+  
